@@ -6,13 +6,13 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 import "./TrustfulOracle.sol";
 import "../DamnValuableNFT.sol";
+import "hardhat/console.sol";
 
 /**
  * @title Exchange
  * @author Damn Vulnerable DeFi (https://damnvulnerabledefi.xyz)
  */
 contract Exchange is ReentrancyGuard {
-
     using Address for address payable;
 
     DamnValuableNFT public immutable token;
@@ -35,7 +35,8 @@ contract Exchange is ReentrancyGuard {
         require(amountPaidInWei >= currentPriceInWei, "Amount paid is not enough");
 
         uint256 tokenId = token.safeMint(msg.sender);
-        
+        console.log("Buying tokenId==%i", tokenId);
+
         payable(msg.sender).sendValue(amountPaidInWei - currentPriceInWei);
 
         emit TokenBought(msg.sender, tokenId, currentPriceInWei);
@@ -53,7 +54,7 @@ contract Exchange is ReentrancyGuard {
 
         token.transferFrom(msg.sender, address(this), tokenId);
         token.burn(tokenId);
-        
+
         payable(msg.sender).sendValue(currentPriceInWei);
 
         emit TokenSold(msg.sender, tokenId, currentPriceInWei);
