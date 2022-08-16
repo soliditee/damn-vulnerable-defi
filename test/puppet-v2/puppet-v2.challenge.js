@@ -144,7 +144,7 @@ describe("[Challenge] Puppet v2", function () {
                 await wethConnect.balanceOf(attacker.address)
             )}`
         )
-        // 2) Now we borrower all from the Lending Pool
+        // 2) Now we borrower all DVT from the Lending Pool
         await wethConnect.approve(this.lendingPool.address, ethers.utils.parseEther("30"))
         const poolConnect = this.lendingPool.connect(attacker)
         await poolConnect.borrow(POOL_INITIAL_TOKEN_BALANCE)
