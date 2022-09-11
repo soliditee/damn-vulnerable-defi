@@ -17,6 +17,7 @@
     "puppet-v2": "yarn hardhat test test/puppet-v2/puppet-v2.challenge.js",
     "free-rider": "yarn hardhat test test/free-rider/free-rider.challenge.js",
     "backdoor": "yarn hardhat test test/backdoor/backdoor.challenge.js",
+    "backdoor2": "yarn hardhat test test/backdoor/backdoor.challenge2.js",
     "climber": "yarn hardhat test test/climber/climber.challenge.js",
     "safe-miners": "yarn hardhat test test/safe-miners/safe-miners.challenge.js"
   },
